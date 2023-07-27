@@ -1,0 +1,816 @@
+openapi : 3.0.3
+info : 
+  title :  XAWK 
+  description : Apis for XAWK 
+  version : 1.0.0
+  contact :
+    email : abc@gmail.com
+servers :
+  - url : http://localhost:8080/
+    description : this is local server
+  - url : http://mycompant.com
+    description : this is production server
+paths : 
+  / : 
+    get : 
+      summary : Returns a string
+      tags :
+      - User
+      responses :
+        200 : 
+          description : success
+          schema : 
+          type : string
+# apply for mining premit
+  /api/v1/applications/mining-permit :
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - To apply for mining permit
+      requestBody : 
+        required : true 
+        content : 
+          application/json :
+            schema : 
+              type : object 
+              properties : 
+                applicationRefNumber :
+                  type : string 
+                mineralType :
+                  type : array 
+                  items : 
+                    type : string
+                provinces :
+                  type : string
+                farmName :
+                  type : string
+                farmPortion :
+                  type : string
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                proofOfApplicationDocument:
+                  type : string
+                  format : binary
+                environmentalAuthorizationDocument:
+                  type : string
+                  format : binary
+                technicalAbilityDocument:
+                  type : string
+                  format : binary
+                regulationMapDocument:
+                  type : string
+                  format : binary
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref : "#/components/status/200"
+                  
+              example : 
+                success : true
+                msg : Application submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+                $ref : "#/components/status/404"
+
+# apply for mining-right
+  /api/v1/applications/mining-right :
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - To apply for mining right
+      requestBody : 
+        required : true 
+        content : 
+          application/json :
+            schema : 
+              type : object 
+              properties : 
+                applicationRefNumber :
+                  type : string 
+                mineralType :
+                  type : array 
+                  items : 
+                    type : string
+                categoryOfMinerals :
+                  type : string
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                proofOfApplicationDocument:
+                  type : string
+                  format : binary
+                environmentalAuthorizationDocument:
+                  type : string
+                  format : binary
+                technicalAbilityDocument:
+                  type : string
+                  format : binary
+                regulationMapDocument:
+                  type : string
+                  format : binary
+                prospectingWorksProgrammeDocument:
+                  type : string
+                  format : binary
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+                  
+              example : 
+                success : true
+                msg : Application submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+                $ref : "#/components/status/404"
+
+
+# acceptance of mining permit
+  /api/v1/acceptance/mining-permit:
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - For Acceptance of mining permit and appointment of environement consultant
+      requestBody : 
+        required : true 
+        content : 
+          application/json : 
+            schema :
+              type : object
+              properties :
+                applicationRefNumber :
+                  type : string
+                environmentalConsultant :
+                  type : string
+                  description : name of the environment consultant
+                # applicationRefNumber:
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                acceptanceLetterDocument:
+                  type : string
+                  format : binary
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+                  
+              example : 
+                success : true
+                msg : Acceptance letter submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+               $ref : "#/components/status/404"
+
+# acceptance of prospecting right
+  /api/v1/acceptance/prospecting-right:
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - For Acceptance of prospecting rights and appointment of environement consultant
+      requestBody : 
+        required : true 
+        content : 
+          application/json : 
+            schema :
+              type : object
+              properties :
+                applicationRefNumber :
+                  type : string
+                environmentalConsultant :
+                  type : string
+                  description : name of the environment consultant
+                # applicationRefNumber:
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                acceptanceLetterDocument:
+                  type : string
+                  format : binary
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+                  
+              example : 
+                success : true
+                msg : Acceptance letter submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+               $ref : "#/components/status/404"
+
+
+# acceptance of mining rights
+  /api/v1/acceptance/mining-right:
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - For Acceptance of mining rights and appointment of environement consultant
+      requestBody : 
+        required : true 
+        content : 
+          application/json : 
+            schema :
+              type : object
+              properties :
+                applicationRefNumber :
+                  type : string
+                environmentalConsultant :
+                  type : string
+                  description : name of the environment consultant
+                # applicationRefNumber:
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                acceptanceLetterDocument:
+                  type : string
+                  format : binary
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+                  
+              example : 
+                success : true
+                msg : Acceptance letter submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+               $ref : "#/components/status/404"
+
+
+# submitting basic-assessment-report of mining permit
+  /api/v1/basic-assessment-report/mining-permit:
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - For submitting basic-assessment-report of mining permit
+      requestBody : 
+        required : true 
+        content : 
+          application/json : 
+            schema :
+              type : object
+              properties :
+                applicationRefNumber :
+                  type : string
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                  consultantionReportDocument:
+                    type : string
+                    format : binary
+                  dmrCommentDocument:
+                    type : string
+                    format : binary
+                  basicAssesmentReportDocument:
+                    type : string
+                    format : binary
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+                  
+              example : 
+                success : true
+                msg : Basic assessment report submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+               $ref : "#/components/status/404"
+
+# submitting basic-assessment-report of prospecting-right
+  /api/v1/basic-assessment-report/prospecting-right:
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - For submitting basic-assessment-report of prospecting right
+      requestBody : 
+        required : true 
+        content : 
+          application/json : 
+            schema :
+              type : object
+              properties :
+                applicationRefNumber :
+                  type : string
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                  consultantionReportDocument:
+                    type : string
+                    format : binary
+                  dmrCommentDocument:
+                    type : string
+                    format : binary
+                  basicAssesmentReportDocument:
+                    type : string
+                    format : binary
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+                  
+              example : 
+                success : true
+                msg : Basic assessment report submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+               $ref : "#/components/status/404"
+
+# submitting basic-assessment-report of mining-right
+  /api/v1/basic-assessment-report/mining-right:
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - For submitting basic-assessment-report of mining right
+      requestBody : 
+        required : true 
+        content : 
+          application/json : 
+            schema :
+              type : object
+              properties :
+                applicationRefNumber :
+                  type : string
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                  consultantionReportDocument:
+                    type : string
+                    format : binary
+                  dmrCommentDocument:
+                    type : string
+                    format : binary
+                  basicAssesmentReportDocument:
+                    type : string
+                    format : binary
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+              example : 
+                success : true
+                msg : Basic assessment report submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+               $ref : "#/components/status/404"
+
+
+# submitting financial-provision of mining-permit
+  /api/v1/financial-provision/mining-permit:
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - For submitting financial-provision of mining-permit
+      requestBody : 
+        required : true 
+        content : 
+          application/json : 
+            schema :
+              type : object
+              properties :
+                applicationRefNumber :
+                  type : string
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                  financialProvisionDocument:
+                    type : string
+                    format : binary
+                  
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+              example : 
+                success : true
+                msg : Basic assessment report submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+               $ref : "#/components/status/404"
+
+# submitting financial-provision of prospecting right
+  /api/v1/financial-provision/prospecting-right:
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - For submitting financial-provision of prospecting right
+      requestBody : 
+        required : true 
+        content : 
+          application/json : 
+            schema :
+              type : object
+              properties :
+                applicationRefNumber :
+                  type : string
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                  financialProvisionDocument:
+                    type : string
+                    format : binary
+                  
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+              example : 
+                success : true
+                msg : Basic assessment report submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+               $ref : "#/components/status/404"
+
+# submitting financial-provision of mining right
+  /api/v1/financial-provision/mining-right:
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - For submitting financial-provision of mining right
+      requestBody : 
+        required : true 
+        content : 
+          application/json : 
+            schema :
+              type : object
+              properties :
+                applicationRefNumber :
+                  type : string
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                  financialProvisionDocument:
+                    type : string
+                    format : binary
+                  
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+              example : 
+                success : true
+                msg : Basic assessment report submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+               $ref : "#/components/status/404"
+
+# submitting granting-letter of mining-permit
+  /api/v1/granting-letter/mining-permit:
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - For submitting granting letter of mining-permit
+      requestBody : 
+        required : true 
+        content : 
+          application/json : 
+            schema :
+              type : object
+              properties :
+                applicationRefNumber :
+                  type : string
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                  grantingLetter:
+                    type : string
+                    format : binary
+                  
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+              example : 
+                success : true
+                msg : Basic assessment report submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+               $ref : "#/components/status/404"
+
+# submitting granting-letter of prospecting-right
+  /api/v1/granting-letter/prospecting-right:
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - For submitting granting letter of prospecting-right
+      requestBody : 
+        required : true 
+        content : 
+          application/json : 
+            schema :
+              type : object
+              properties :
+                applicationRefNumber :
+                  type : string
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                  grantingLetter:
+                    type : string
+                    format : binary
+                  
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+              example : 
+                success : true
+                msg : Basic assessment report submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+               $ref : "#/components/status/404"
+
+# submitting granting-letter of mining-right
+  /api/v1/granting-letter/mining-right:
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - For submitting granting letter of mining-right
+      requestBody : 
+        required : true 
+        content : 
+          application/json : 
+            schema :
+              type : object
+              properties :
+                applicationRefNumber :
+                  type : string
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                  grantingLetter:
+                    type : string
+                    format : binary
+                  
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+              example : 
+                success : true
+                msg : Basic assessment report submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+               $ref : "#/components/status/404"
+
+# submitting environmental authorisation document for mining permit
+  /api/v1/environmental-authorization/mining-permit:
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - For submitting environmental authorisation document for mining permit
+      requestBody : 
+        required : true 
+        content : 
+          application/json : 
+            schema :
+              type : object
+              properties :
+                applicationRefNumber :
+                  type : string
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                  environmentalAuthorizationDocument:
+                    type : string
+                    format : binary
+                  
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+              example : 
+                success : true
+                msg : Basic assessment report submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+               $ref : "#/components/status/404"
+
+# submitting environmental authorisation document for prospecting right
+  /api/v1/environmental-authorization/prospecting-right:
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - For submitting environmental authorisation document for prospecting right
+      requestBody : 
+        required : true 
+        content : 
+          application/json : 
+            schema :
+              type : object
+              properties :
+                applicationRefNumber :
+                  type : string
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                  environmentalAuthorizationDocument:
+                    type : string
+                    format : binary
+                  
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+              example : 
+                success : true
+                msg : Basic assessment report submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+               $ref : "#/components/status/404"
+
+# submitting environmental authorisation document for mining-right
+  /api/v1/environmental-authorization/mining-right:
+    post : 
+      summary : Returns a json object 
+      tags : 
+        - For submitting environmental authorisation document for mining right
+      requestBody : 
+        required : true 
+        content : 
+          application/json : 
+            schema :
+              type : object
+              properties :
+                applicationRefNumber :
+                  type : string
+          multipart/form-data:
+            schema : 
+              type : object 
+              properties : 
+                  environmentalAuthorizationDocument:
+                    type : string
+                    format : binary
+                  
+      responses : 
+        200 : 
+          description : success 👍
+          content : 
+            application/json :
+              schema  : 
+                $ref: "#/components/status/200"
+              example : 
+                success : true
+                msg : Basic assessment report submitted successfully
+        400 : 
+          description : Error 😔
+          content : 
+            application/json :
+              schema  : 
+               $ref : "#/components/status/404"
+
+
+
+                  
+              
+          
+
+components :
+  status :
+    404 : 
+      type : object
+      properties : 
+        success : 
+          type : boolean
+        error : 
+          type : string
+      example : 
+        success : false
+        error : An error occurred try again
+    200 : 
+      type : object 
+      properties :  
+        success : 
+          type : boolean
+        msg : 
+        type : string
+      
+
+         
+
+
+
+      
+
+
+              
+
+
+                
+
+
+
+      
+    
